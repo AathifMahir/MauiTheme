@@ -40,7 +40,6 @@ internal sealed class ThemeDefault : ITheme
     ThemeStorage _themeStorage = new();
     Dictionary<string, string> _resources = [];
     AppTheme? _defaultTheme = null;
-    string _defaultResource = string.Empty;
     string[] _defaultStyleResources = [];
     Assembly _appAssembly = typeof(ThemeDefault).Assembly;
     bool _isInitialized = false;
@@ -55,7 +54,6 @@ internal sealed class ThemeDefault : ITheme
 
         _resources = theme.Resources;
         _defaultTheme = theme.DefaultTheme;
-        _defaultResource = theme.DefaultResource;
         _defaultStyleResources = theme.DefaultStyleResources;
         _appAssembly = typeof(TApp).Assembly;
 
@@ -72,19 +70,12 @@ internal sealed class ThemeDefault : ITheme
             Resource = string.Empty };
 
         if(!_themeStorage.AppTheme.HasValue)
-        {
             ApplyTheme(_defaultTheme.Value);
-        }
         else
-        {
             ApplyTheme(_themeStorage.AppTheme.Value);
-        }
 
         if (!string.IsNullOrEmpty(_themeStorage.Resource))
             ApplyResource(_themeStorage.Resource, isInit: true);
-
-        else if (!string.IsNullOrEmpty(_defaultResource))
-            ApplyResource(_defaultResource, isInit: true);
 
     }
 
@@ -97,6 +88,13 @@ internal sealed class ThemeDefault : ITheme
         ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
 
         if (mergedDictionaries is null || mergedDictionaries.Count is 0) return;
+
+        if (isInit && mergedDictionaries
+            .First().Source.OriginalString == GenerateFullUriString(resource)) 
+        {
+            _currentResource = _resources.FirstOrDefault(x => x.Value == resource).Key;
+            return;
+        }
 
         ResourceDictionary? rdPrimary;
 
@@ -129,7 +127,7 @@ internal sealed class ThemeDefault : ITheme
         ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
         if (mergedDictionaries is null || mergedDictionaries.Count is 0) return string.Empty;
 
-        var str = _resources.FirstOrDefault(x => $"{x.Value};assembly={_appAssembly.GetName().Name}" == mergedDictionaries.First().Source.OriginalString).Key;
+        var str = _resources.FirstOrDefault(x => GenerateFullUriString(x.Value) == mergedDictionaries.First().Source.OriginalString).Key;
         return str;
     }
 
@@ -180,4 +178,7 @@ internal sealed class ThemeDefault : ITheme
             ? throw new MauiThemeException($"Resource with path '{source}' not found. Make sure the resource dictionary exists.")
             : rd;
     }
+
+    string GenerateFullUriString(string resource) =>
+        $"{resource};assembly={_appAssembly.GetName().Name}";
 }
