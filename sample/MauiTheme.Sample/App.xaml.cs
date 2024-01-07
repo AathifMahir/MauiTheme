@@ -19,7 +19,8 @@ public partial class App : Application
                 {
                     {"Blue", "Resources/Styles/Blue.xaml"},
                     {"Purple", "Resources/Styles/Colors.xaml"},
-                    {"Yellow", "Resources/Styles/Yellow.xaml" }
+                    {"Yellow", "Resources/Styles/Yellow.xaml" },
+                    {"Green", "Resources/Styles/Green.xaml" }
                 };
             
         });

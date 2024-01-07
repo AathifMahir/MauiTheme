@@ -15,8 +15,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
             <StackLayout RadioButtonGroup.GroupName="Theme"
- RadioButtonGroup.SelectedValue="{Binding Selection}" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" Padding="12,12">
+ RadioButtonGroup.SelectedValue="{Binding Selection}" Grid.Column="0" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center" Padding="12,12">
                 <Label FontAttributes="Bold" Text="Theme" FontSize="Large"/>
                 <RadioButton Content="System" Value="{x:Static appModel:AppTheme.Unspecified}" GroupName="Theme"/>
                 <RadioButton Content="Light" Value="{x:Static appModel:AppTheme.Light}" GroupName="Theme"/>
@@ -32,21 +37,26 @@
             </StackLayout>
 
             <StackLayout RadioButtonGroup.GroupName="Color"
-        RadioButtonGroup.SelectedValue="{Binding ColorKey}" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Padding="12,12">
+        RadioButtonGroup.SelectedValue="{Binding ColorKey}" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Padding="12,12">
                 <Label FontAttributes="Bold" Text="Color" FontSize="Large"/>
                 <RadioButton Value="Blue" GroupName="Color">
                     <RadioButton.Content>
-                        <Rectangle BackgroundColor="Blue" WidthRequest="50" HeightRequest="50"/>
+                        <Rectangle Fill="Blue" WidthRequest="50" HeightRequest="50"/>
                     </RadioButton.Content>
                 </RadioButton>
                 <RadioButton Value="Purple" GroupName="Color">
                     <RadioButton.Content>
-                        <Rectangle BackgroundColor="Purple" WidthRequest="50" HeightRequest="50"/>
+                        <Rectangle Fill="Purple" WidthRequest="50" HeightRequest="50"/>
                     </RadioButton.Content>
                 </RadioButton>
                 <RadioButton Value="Yellow" GroupName="Color">
                     <RadioButton.Content>
-                        <Rectangle BackgroundColor="Yellow" WidthRequest="50" HeightRequest="50"/>
+                        <Rectangle Fill="Yellow" WidthRequest="50" HeightRequest="50"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Green" GroupName="Color">
+                    <RadioButton.Content>
+                        <Rectangle Fill="Green" WidthRequest="50" HeightRequest="50"/>
                     </RadioButton.Content>
                 </RadioButton>
                 <Label>
@@ -59,6 +69,7 @@
                 </Label>
             </StackLayout>
 
+            <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
         </Grid>
     </ScrollView>
 
