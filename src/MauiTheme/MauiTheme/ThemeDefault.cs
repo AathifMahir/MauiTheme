@@ -40,9 +40,9 @@ internal sealed class ThemeDefault : ITheme
     // Internal Fields and Properities
     const string _storageKey = "Theme";
     ThemeStorage _themeStorage = new();
-    Dictionary<string, string> _resources = [];
+    Dictionary<string, string> _resources = new();
     AppTheme? _defaultTheme = null;
-    string[] _defaultStyleResources = [];
+    string[] _defaultStyleResources = Array.Empty<string>();
     Assembly _appAssembly = typeof(ThemeDefault).Assembly;
     bool _isInitialized = false;
 
@@ -188,19 +188,18 @@ internal sealed class ThemeDefault : ITheme
         ReadOnlySpan<char> assemblyName = _appAssembly.GetName().Name.AsSpan();
         int length = resource.Length + assemblyName.Length + 10;
 
-        Span<char> assemblyPrefix =
-        [
-            ';',
-            'a',
-            's',
-            's',
-            'e',
-            'm',
-            'b',
-            'l',
-            'y',
-            '=',
-        ];
+        Span<char> assemblyPrefix = stackalloc char[10];
+
+        assemblyPrefix[0] = ';';
+        assemblyPrefix[1] = 'a';
+        assemblyPrefix[2] = 's';
+        assemblyPrefix[3] = 's';
+        assemblyPrefix[4] = 'e';
+        assemblyPrefix[5] = 'm';
+        assemblyPrefix[6] = 'b';
+        assemblyPrefix[7] = 'l';
+        assemblyPrefix[8] = 'y';
+        assemblyPrefix[9] = '=';
 
         StringBuilder stringBuilder = new(length);
         stringBuilder.Append(resource);
