@@ -101,10 +101,10 @@ Theme.Default.CurrentResource = "Yellow";
 
 # License
 
-Maui Shake Detector is Licensed Under [MIT License](https://github.com/AathifMahir/MauiTheme/blob/master/LICENSE.txt).
+Maui Theme is Licensed Under [MIT License](https://github.com/AathifMahir/MauiTheme/blob/master/LICENSE.txt).
 
 # Contribute and Credit
 
-Credits for @taublast for Helping with Resource Creation.
+Credits for [@taublast](https://github.com/taublast) for Helping with Resource Creation.
 
 If you wish to contribute to this project, please don't hesitate to create an issue or request. Your input and feedback are highly appreciated. Additionally, if you're interested in supporting the project by providing resources or [**becoming a sponsor**](https://github.com/sponsors/AathifMahir), your contributions would be welcomed and instrumental in its continued development and success. Thank you for your interest in contributing to this endeavor.
