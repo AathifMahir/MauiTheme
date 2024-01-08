@@ -165,18 +165,19 @@ internal sealed class ThemeDefault : ITheme
 
     ResourceDictionary CreateResource(string source)
     {
-        var xamlResources = _appAssembly.GetCustomAttributes<XamlResourceIdAttribute>()?.ToList();
+        var xamlResources = _appAssembly.GetCustomAttributes<XamlResourceIdAttribute>()
+            ?? Enumerable.Empty<XamlResourceIdAttribute>();
 
-        if (xamlResources == null || xamlResources.Count is 0)
+        if (!xamlResources.Any())
             throw new MauiThemeException("No XAML resources found. Please ensure proper resource URIs and existing resource dictionaries in your project.");
 
         var sourceSpan = source.AsSpan();
         if (sourceSpan.IsEmpty) throw new MauiThemeException($"Resource with path not found. Make sure the provide correct resource path.");
 
-        var matchingResource = xamlResources.FirstOrDefault(x => x.Path.AsSpan().CompareTo(source.AsSpan(), StringComparison.OrdinalIgnoreCase) == 0)
+        var matchingResource = xamlResources.FirstOrDefault(x => x.Path.AsSpan().CompareSpanChar(source.AsSpan()))?.Type
             ?? throw new MauiThemeException($"Resource with path '{sourceSpan}' not found. Make sure the resource dictionary exists.");
 
-        return Activator.CreateInstance(matchingResource.Type) is not ResourceDictionary rd
+        return Activator.CreateInstance(matchingResource) is not ResourceDictionary rd
             ? throw new MauiThemeException($"Resource with path '{sourceSpan}' not found. Make sure the resource dictionary exists.")
             : rd;
     }
