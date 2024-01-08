@@ -1,9 +1,5 @@
 # Maui Theme
 
-|**Latest Stable** | **Latest Preview**|
-|  :---:     |    :---:   |
-|[![AathifMahir.Maui.MauiShakeDetector](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiTheme)](https://www.nuget.org/packages/AathifMahir.Maui.MauiTheme/) | [![AathifMahir.Maui.MauiShakeDetector](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiTheme)](https://nuget.org/packages/AathifMahir.Maui.MauiTheme/absoluteLatest) |
-
 MauiTheme is Theming Libray that Makes the Theming on Dotnet Maui a Breeze with Persistent Theme State Between Sessions and Seamless Resource Swapping, Theme Switcher and etc..
 
 # Get Started
@@ -58,11 +54,10 @@ The App.xaml should include the Default Color and Style Resource Like Below Exam
 
 # Initialize Properties
 
-| Parameters | Type | Description |
-|               :---               |    :---:   |            :---:                                                                               |
-| **DefaultTheme** | `enum` | The Default Theme, if the Theme is Previously Not Assigned by User |
-| **DefaultStyleResources** | `Dictionary<string, string>` | The Default Style Resources that Needs to Applied with Every Resource Change **Eg: Styles.xaml** |
-| **Resources** | `Dictionary<string, string>` | All Resources in the Project Excluding Style Resources |
+| Parameters           | Type                       | Description |
+| DefaultTheme         | enum                       | The Default Theme, if the Theme is Previously Not Assigned by User |
+| DefaultStyleResources| Dictionary<string, string> | The Default Style Resources that Needs to Applied with Every Resource Change **Eg: Styles.xaml** |
+| Resources            | Dictionary<string, string> | All Resources in the Project Excluding Style Resources |
 
 # Theme
 
@@ -98,13 +93,6 @@ Theme.Default.CurrentResource = "Yellow";
 
 ```
 
-
 # License
 
 Maui Shake Detector is Licensed Under [MIT License](https://github.com/AathifMahir/MauiTheme/blob/master/LICENSE.txt).
-
-# Contribute and Credit
-
-Credits for @taublast for Helping with Resource Creation.
-
-If you wish to contribute to this project, please don't hesitate to create an issue or request. Your input and feedback are highly appreciated. Additionally, if you're interested in supporting the project by providing resources or [**becoming a sponsor**](https://github.com/sponsors/AathifMahir), your contributions would be welcomed and instrumental in its continued development and success. Thank you for your interest in contributing to this endeavor.

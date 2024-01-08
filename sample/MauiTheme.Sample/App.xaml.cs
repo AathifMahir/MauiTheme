@@ -12,8 +12,6 @@ public partial class App : Application
         {
             // Default Theme
             x.DefaultTheme = AppTheme.Dark;
-            // Default Color Resource
-            x.DefaultResource = "Resources/Styles/Colors.xaml";
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles
@@ -21,7 +19,8 @@ public partial class App : Application
                 {
                     {"Blue", "Resources/Styles/Blue.xaml"},
                     {"Purple", "Resources/Styles/Colors.xaml"},
-                    {"Yellow", "Resources/Styles/Yellow.xaml" }
+                    {"Yellow", "Resources/Styles/Yellow.xaml" },
+                    {"Green", "Resources/Styles/Green.xaml" }
                 };
             
         });
