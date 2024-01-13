@@ -1,16 +1,18 @@
-﻿using MauiTheme.Exceptions;
+﻿using MauiTheme.Core;
+using MauiTheme.Exceptions;
 using MauiTheme.Extensions;
+using MauiTheme.Helpers;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
 
 
 namespace MauiTheme;
-internal sealed class ThemeDefault : ITheme
+internal sealed class MauiThemeDefault : IMauiTheme
 {
 
-    private AppTheme _currentAppTheme;
-    public AppTheme CurrentAppTheme
+    private MauiAppTheme _currentAppTheme;
+    public MauiAppTheme CurrentAppTheme
     {
         get => _currentAppTheme;
         set
@@ -41,12 +43,12 @@ internal sealed class ThemeDefault : ITheme
     const string _storageKey = "Theme";
     ThemeStorage _themeStorage = new();
     Dictionary<string, string> _resources = new();
-    AppTheme? _defaultTheme = null;
+    MauiAppTheme? _defaultTheme = null;
     string[] _defaultStyleResources = Array.Empty<string>();
-    Assembly _appAssembly = typeof(ThemeDefault).Assembly;
+    Assembly _appAssembly = typeof(MauiThemeDefault).Assembly;
     bool _isInitialized = false;
 
-    public void InitializeTheme<TApp>(Action<ThemeConfiguration> themeConfiguration) where TApp : Application
+    public void InitializeTheme<TApp>(Action<ThemeConfiguration> themeConfiguration)
     {
         if (_isInitialized) return;
 
@@ -143,16 +145,17 @@ internal sealed class ThemeDefault : ITheme
         Preferences.Default.Set(_storageKey, _themeStorage.ToJson());
     }
 
-    void ApplyTheme(AppTheme theme)
+    void ApplyTheme(MauiAppTheme theme)
     {
         if (Application.Current is null) return;
-        if (Application.Current.UserAppTheme == theme) return;
+        var appTheme = EnumHelper.MapMauiTheme(theme);
+        if (Application.Current.UserAppTheme == appTheme) return;
 
-        Application.Current.UserAppTheme = theme;
+        Application.Current.UserAppTheme = appTheme;
         _currentAppTheme = theme;
     }
 
-    void SetTheme(AppTheme appTheme)
+    void SetTheme(MauiAppTheme appTheme)
     {
         if (!_isInitialized) throw new MauiThemeException("Make sure to Initialize by using Initialize Theme before Setting the Theme");
 

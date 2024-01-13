@@ -1,7 +1,9 @@
-﻿namespace MauiTheme;
-public static class Theme
+﻿using MauiTheme.Core;
+
+namespace MauiTheme;
+public static class MauiTheme
 {
-    public static AppTheme CurrentAppTheme 
+    public static MauiAppTheme CurrentAppTheme 
     {
         get => Default.CurrentAppTheme;
         set => Default.CurrentAppTheme = value;
@@ -14,10 +16,10 @@ public static class Theme
 
     public static void InitializeTheme<TApp>(Action<ThemeConfiguration> configs) where TApp : Application => Default.InitializeTheme<TApp>(configs);
 
-    internal static void SetDefault(ITheme? implementation) =>
+    internal static void SetDefault(IMauiTheme? implementation) =>
        defaultTheme = implementation;
 
-    static ITheme? defaultTheme;
+    static IMauiTheme? defaultTheme;
 
-    public static ITheme Default => defaultTheme ??= new ThemeDefault();
+    public static IMauiTheme Default => defaultTheme ??= new MauiThemeDefault();
 }

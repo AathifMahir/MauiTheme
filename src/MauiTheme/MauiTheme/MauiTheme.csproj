@@ -62,4 +62,8 @@
 		<!--<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />-->
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\MauiTheme.Core\MauiTheme.Core.csproj" />
+	</ItemGroup>
+
 </Project>
