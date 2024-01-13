@@ -8,7 +8,7 @@ public partial class App : Application
 
         MainPage = new AppShell();
 
-        Theme.Default.InitializeTheme<App>(x =>
+        MauiTheme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
             x.DefaultTheme = AppTheme.Dark;

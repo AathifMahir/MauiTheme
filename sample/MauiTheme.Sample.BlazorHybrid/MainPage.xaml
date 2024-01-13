@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiTheme.Sample.BlazorHybrid"
+             xmlns:shared="clr-namespace:MauiTheme.Sample.Shared;assembly=MauiTheme.Sample.Shared"
+             x:DataType="local:MainPage"
+             x:Class="MauiTheme.Sample.BlazorHybrid.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout BackgroundColor="{AppThemeBinding Dark={DynamicResource PrimaryDark}, Light={DynamicResource Primary}}" Grid.Row="0">
+            <Button Text="Change Theme" Clicked="Button_Clicked"/>
+            <Label Padding="12,12" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding CurrentTheme}" />
+        </StackLayout>
+
+        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html" Grid.Row="1">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+
+    </Grid>
+   
+
+</ContentPage>
