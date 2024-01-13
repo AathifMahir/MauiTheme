@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\MauiTheme.BlazorHybrid\MauiTheme.BlazorHybrid.csproj" />
-    <ProjectReference Include="..\..\src\MauiTheme.Core\MauiTheme.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

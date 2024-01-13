@@ -63,7 +63,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\MauiTheme\MauiTheme\MauiTheme.csproj" />
+	  <ProjectReference Include="..\..\src\MauiTheme\MauiTheme.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
