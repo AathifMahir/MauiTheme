@@ -1,7 +1,6 @@
 ﻿using MauiTheme.Core;
 using MauiTheme.Exceptions;
 using MauiTheme.Extensions;
-using MauiTheme.Helpers;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
@@ -148,7 +147,7 @@ internal sealed class MauiThemeDefault : IMauiTheme
     void ApplyTheme(MauiAppTheme theme)
     {
         if (Application.Current is null) return;
-        var appTheme = EnumHelper.MapMauiTheme(theme);
+        var appTheme = theme.MapToAppTheme();
         if (Application.Current.UserAppTheme == appTheme) return;
 
         Application.Current.UserAppTheme = appTheme;

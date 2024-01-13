@@ -1,9 +1,9 @@
 ﻿using MauiTheme.Core;
 
-namespace MauiTheme.Helpers;
-internal static class EnumHelper
+namespace MauiTheme.Extensions;
+internal static class EnumExtension
 {
-    public static AppTheme MapMauiTheme(MauiAppTheme mauiAppTheme) =>
+    internal static AppTheme MapToAppTheme(this MauiAppTheme mauiAppTheme) =>
         mauiAppTheme switch
         {
             MauiAppTheme.Unspecified => AppTheme.Unspecified,
@@ -11,5 +11,4 @@ internal static class EnumHelper
             MauiAppTheme.Light => AppTheme.Light,
             _ => AppTheme.Unspecified,
         };
-    
 }
