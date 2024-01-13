@@ -5,19 +5,19 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme", "MauiTheme\MauiTheme.csproj", "{19780437-9EC0-4ACB-83C8-8FB735E012FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Sample", "..\..\sample\MauiTheme.Sample\MauiTheme.Sample.csproj", "{8F9481F8-B2FB-4C01-BB12-E9999CE47CFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Sample", "..\sample\MauiTheme.Sample\MauiTheme.Sample.csproj", "{8F9481F8-B2FB-4C01-BB12-E9999CE47CFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.BlazorHybrid", "..\MauiTheme.BlazorHybrid\MauiTheme.BlazorHybrid.csproj", "{9EC581D8-5D62-47A2-85C4-914585E28638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.BlazorHybrid", "MauiTheme.BlazorHybrid\MauiTheme.BlazorHybrid.csproj", "{9EC581D8-5D62-47A2-85C4-914585E28638}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Sample.BlazorHybrid", "..\..\sample\MauiTheme.Sample.BlazorHybrid\MauiTheme.Sample.BlazorHybrid.csproj", "{7BFCD51E-2D75-45A0-B24F-7A063B7B7418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Sample.BlazorHybrid", "..\sample\MauiTheme.Sample.BlazorHybrid\MauiTheme.Sample.BlazorHybrid.csproj", "{7BFCD51E-2D75-45A0-B24F-7A063B7B7418}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Sample.Shared", "..\..\sample\MauiTheme.Sample.Shared\MauiTheme.Sample.Shared.csproj", "{43B7795F-B295-491D-B23E-5AD691CEBAEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Sample.Shared", "..\sample\MauiTheme.Sample.Shared\MauiTheme.Sample.Shared.csproj", "{43B7795F-B295-491D-B23E-5AD691CEBAEF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{F0340830-D8BD-4DAE-9C8A-DBB9068F7C39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{07143E41-4EB9-465F-BDB7-FAF569F4F39B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Core", "..\MauiTheme.Core\MauiTheme.Core.csproj", "{7CFDAFE1-983A-45A0-B477-3B58C505245E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTheme.Core", "MauiTheme.Core\MauiTheme.Core.csproj", "{7CFDAFE1-983A-45A0-B477-3B58C505245E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
