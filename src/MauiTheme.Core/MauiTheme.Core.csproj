@@ -7,4 +7,43 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<GitInfoReportImportance>high</GitInfoReportImportance>
+		<PackageId>AathifMahir.Maui.MauiTheme.Core</PackageId>
+		<Summary>Core Library for Maui Theme</Summary>
+		<Authors>Aathif Mahir</Authors>
+		<Owners>Aathif Mahir</Owners>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Product>Maui Theme - Core (net7.0)(net8.0)</Product>
+		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/AathifMahir/MauiTheme</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AathifMahir/MauiTheme</RepositoryUrl>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<Title>Maui Theme</Title>
+		<Description>Maui Theme for Dotnet Maui with Ability Retain Sessions and Easy Resource Swapping, Easy Theme Switcher and etc..</Description>
+		<!--<PackageIcon>icon.png</PackageIcon>-->
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
+		<Version>0.1.0-preview</Version>
+		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageTags>Maui,Theme,Color,DarkAndLight,AccentColors</PackageTags>
+		<Configurations>Debug;Release</Configurations>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+		<!--<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />-->
+	</ItemGroup>
+
 </Project>
