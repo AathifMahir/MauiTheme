@@ -1,18 +1,61 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net7.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
 
+	<PropertyGroup>
+		<GitInfoReportImportance>high</GitInfoReportImportance>
+		<PackageId>AathifMahir.Maui.MauiTheme.BlazorHybrid</PackageId>
+		<Summary>Maui Theme - Theming Libray for Blazor Hybrid with Ability Retain Sessions and Easy Resource Swapping and etc..</Summary>
+		<Authors>Aathif Mahir</Authors>
+		<Owners>Aathif Mahir</Owners>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Product>Maui Theme - Core (net7.0)(net8.0)</Product>
+		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/AathifMahir/MauiTheme</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AathifMahir/MauiTheme</RepositoryUrl>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<Title>Maui Theme</Title>
+		<Description>Maui Theme for Dotnet Maui with Ability Retain Sessions and Easy Resource Swapping, Easy Theme Switcher and etc..</Description>
+		<!--<PackageIcon>icon.png</PackageIcon>-->
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
+		<Version>0.1.0-preview</Version>
+		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageTags>Maui,Theme,Color,DarkAndLight,AccentColors</PackageTags>
+		<Configurations>Debug;Release</Configurations>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+		<!--<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />-->
+	</ItemGroup>
+
+
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8'))">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1" />
+	</ItemGroup>
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net7'))">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.15" />
+	</ItemGroup>
+	
   <ItemGroup>
     <SupportedPlatform Include="browser" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
