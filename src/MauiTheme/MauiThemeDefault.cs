@@ -1,5 +1,5 @@
 ﻿using MauiTheme.Core;
-using MauiTheme.Exceptions;
+using MauiTheme.Core.Exceptions;
 using MauiTheme.Extensions;
 using System.Reflection;
 using System.Text;
@@ -170,7 +170,7 @@ internal sealed class MauiThemeDefault : IMauiTheme
         var xamlResources = _appAssembly.GetCustomAttributes<XamlResourceIdAttribute>()
             ?? Enumerable.Empty<XamlResourceIdAttribute>();
 
-        if (!xamlResources.Any())
+        if (xamlResources == Enumerable.Empty<XamlResourceIdAttribute>())
             throw new MauiThemeException("No XAML resources found. Please ensure proper resource URIs and existing resource dictionaries in your project.");
 
         var sourceSpan = source.AsSpan();
