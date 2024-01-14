@@ -7,17 +7,41 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        BindingContext = this;
     }
 
-
-    public static MauiAppTheme CurrentTheme 
+    MauiAppTheme _currentAppTheme;
+    public MauiAppTheme Selection
     {
-        get => MauiTheme.CurrentAppTheme;
-        set => MauiTheme.CurrentAppTheme = value;
+        get {
+            if(MauiTheme.Default.CurrentAppTheme != _currentAppTheme)
+            {
+                _currentAppTheme = MauiTheme.Default.CurrentAppTheme;
+                OnPropertyChanged(nameof(Selection));
+                return _currentAppTheme;
+            }
+            return _currentAppTheme;
+        }
+        set
+        {
+            if (value != MauiTheme.Default.CurrentAppTheme)
+            {
+                MauiTheme.Default.CurrentAppTheme = value;
+                OnPropertyChanged(nameof(Selection));
+            }
+        }
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    public string ColorKey
     {
-        MauiTheme.Default.CurrentAppTheme = MauiAppTheme.Dark;
+        get => MauiTheme.Default.CurrentResource;
+        set
+        {
+            if (value != MauiTheme.Default.CurrentResource)
+            {
+                MauiTheme.Default.CurrentResource = value;
+                OnPropertyChanged(nameof(ColorKey));
+            }
+        }
     }
 }

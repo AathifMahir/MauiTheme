@@ -3,26 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiTheme.Sample.BlazorHybrid"
              xmlns:shared="clr-namespace:MauiTheme.Sample.Shared;assembly=MauiTheme.Sample.Shared"
+             xmlns:mtc="clr-namespace:MauiTheme.Core;assembly=MauiTheme.Core"
              x:DataType="local:MainPage"
-             x:Class="MauiTheme.Sample.BlazorHybrid.MainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+             x:Class="MauiTheme.Sample.BlazorHybrid.MainPage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <StackLayout BackgroundColor="{AppThemeBinding Dark={DynamicResource PrimaryDark}, Light={DynamicResource Primary}}" Grid.Row="0">
-            <Button Text="Change Theme" Clicked="Button_Clicked"/>
-            <Label Padding="12,12" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding CurrentTheme}" />
-        </StackLayout>
+        
 
-        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html" Grid.Row="1">
+        <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html" Grid.Column="0">
             <BlazorWebView.RootComponents>
                 <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
             </BlazorWebView.RootComponents>
         </BlazorWebView>
+
+        <VerticalStackLayout BackgroundColor="{AppThemeBinding Dark={DynamicResource PrimaryDark}, Light={DynamicResource Primary}}" Grid.Column="1">
+            <StackLayout RadioButtonGroup.GroupName="Theme"
+RadioButtonGroup.SelectedValue="{Binding Selection}" HorizontalOptions="Center" VerticalOptions="Center" Padding="12,12">
+                <Label FontAttributes="Bold" Text="Theme" FontSize="Large"/>
+                <RadioButton Content="System" Value="{x:Static mtc:MauiAppTheme.Unspecified}" GroupName="Theme"/>
+                <RadioButton Content="Light" Value="{x:Static mtc:MauiAppTheme.Light}" GroupName="Theme"/>
+                <RadioButton Content="Dark" Value="{x:Static mtc:MauiAppTheme.Dark}" GroupName="Theme"/>
+                <Label >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="You have chosen: " />
+                            <Span FontAttributes="Bold" Text="{Binding Selection}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <StackLayout RadioButtonGroup.GroupName="Color"
+       RadioButtonGroup.SelectedValue="{Binding ColorKey}" HorizontalOptions="Center" VerticalOptions="Center" Padding="12,12">
+                <Label FontAttributes="Bold" Text="Color" FontSize="Large"/>
+                <RadioButton Value="Blue" GroupName="Color">
+                    <RadioButton.Content>
+                        <Rectangle Fill="Blue" WidthRequest="50" HeightRequest="50"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Purple" GroupName="Color">
+                    <RadioButton.Content>
+                        <Rectangle Fill="Purple" WidthRequest="50" HeightRequest="50"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Yellow" GroupName="Color">
+                    <RadioButton.Content>
+                        <Rectangle Fill="Yellow" WidthRequest="50" HeightRequest="50"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Green" GroupName="Color">
+                    <RadioButton.Content>
+                        <Rectangle Fill="Green" WidthRequest="50" HeightRequest="50"/>
+                    </RadioButton.Content>
+                </RadioButton>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="You have chosen: " />
+                            <Span FontAttributes="Bold" Text="{Binding ColorKey}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </VerticalStackLayout>
 
     </Grid>
    

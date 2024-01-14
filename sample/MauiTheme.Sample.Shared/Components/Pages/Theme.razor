@@ -1,0 +1,24 @@
+@page "/"
+@inject IMauiThemeHybrid MauiThemeHybrid
+
+<title>Theme</title>
+
+<h1>Theme</h1>
+
+<h3>Current Theme</h3>
+<InputSelect TValue="MauiAppTheme" @bind-Value="MauiThemeHybrid.CurrentAppTheme">
+    <option value="@MauiAppTheme.Dark">Dark</option>
+    <option value="@MauiAppTheme.Light">Light</option>
+    <option value="@MauiAppTheme.Unspecified">System</option>
+</InputSelect>
+
+<br />
+
+<h3>Current Color</h3>
+<InputSelect TValue="string" @bind-Value="MauiThemeHybrid.CurrentResource">
+    <option value="Blue">Blue</option>
+    <option value="Purple">Purple</option>
+    <option value="Yellow">Yellow</option>
+    <option value="Green">Green</option>
+</InputSelect>
+

@@ -1,4 +1,6 @@
-﻿namespace MauiTheme.Sample;
+﻿using MauiTheme.Core;
+
+namespace MauiTheme.Sample;
 
 public partial class App : Application
 {
@@ -11,7 +13,7 @@ public partial class App : Application
         MauiTheme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = AppTheme.Dark;
+            x.DefaultTheme = MauiAppTheme.Dark;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles
@@ -22,7 +24,6 @@ public partial class App : Application
                     {"Yellow", "Resources/Styles/Yellow.xaml" },
                     {"Green", "Resources/Styles/Green.xaml" }
                 };
-            
         });
 
     }
