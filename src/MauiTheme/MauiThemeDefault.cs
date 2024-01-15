@@ -1,9 +1,11 @@
 ﻿using MauiTheme.Core;
 using MauiTheme.Core.Exceptions;
+using MauiTheme.Core.Events;
 using MauiTheme.Extensions;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Input;
 
 
 namespace MauiTheme;
@@ -20,6 +22,11 @@ internal sealed class MauiThemeDefault : IMauiTheme
             {
                 _currentAppTheme = value;
                 SetTheme(value);
+
+                ThemeChanged?.Invoke(null, new MauiAppThemeChangedEventArgs(value));
+
+                if (ThemeChangedCommand is not null && ThemeChangedCommand.CanExecute(value))
+                    ThemeChangedCommand.Execute(value);
             }
         }
     }
@@ -34,9 +41,17 @@ internal sealed class MauiThemeDefault : IMauiTheme
             {
                 _currentResource = value;
                 SetResource(value);
+
+                ResourceChanged?.Invoke(null, new ResourceChangedEventArgs(value));
+
+                if (ResourceChangedCommand is not null && ResourceChangedCommand.CanExecute(value))
+                    ResourceChangedCommand.Execute(value);
             }
         }
     }
+
+    public ICommand? ThemeChangedCommand { get; set; }
+    public ICommand? ResourceChangedCommand { get; set; }
 
     // Internal Fields and Properities
     const string _storageKey = "Theme";
@@ -46,6 +61,9 @@ internal sealed class MauiThemeDefault : IMauiTheme
     string[] _defaultStyleResources = Array.Empty<string>();
     Assembly _appAssembly = typeof(MauiThemeDefault).Assembly;
     bool _isInitialized = false;
+
+    public event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged;
+    public event EventHandler<ResourceChangedEventArgs>? ResourceChanged;
 
     public void InitializeTheme<TApp>(Action<ThemeConfiguration> themeConfiguration)
     {
