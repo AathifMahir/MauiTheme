@@ -95,6 +95,28 @@ Theme.Default.CurrentResource = "Yellow";
 
 ```
 
+# Listening to Theme or Resource Changes
+
+Mainly this is useful when theme or resource changes is invoked from external source for instance from a razor class library
+
+```csharp
+
+// Theme Changed Event
+MauiTheme.Default.ThemeChanged += (s, t) => 
+{
+    Debug.Writeline($"New Theme : {t.ToString()}")
+}
+
+// Theme Changed Event
+MauiTheme.Default.ResourceChanged += (s, r) => 
+{
+    Debug.Writeline($"New Resource : {r}")
+}
+
+```
+
+Additionally we can use `ICommand` as well, Those are `ThemeChangedCommand` and `ResourceChangedCommand`
+
 # License
 
 Maui Shake Detector is Licensed Under [MIT License](https://github.com/AathifMahir/MauiTheme/blob/master/LICENSE.txt).
