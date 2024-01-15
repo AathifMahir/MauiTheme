@@ -1,4 +1,5 @@
 ﻿using MauiTheme.Core;
+using MauiTheme.Core.Events;
 
 namespace MauiTheme.Sample.BlazorHybrid;
 
@@ -8,20 +9,23 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         BindingContext = this;
+
+        MauiTheme.Default.ThemeChanged += Default_ThemeChanged;
+        MauiTheme.Default.ResourceChanged += Default_ResourceChanged;
     }
 
-    MauiAppTheme _currentAppTheme;
+    private void Default_ResourceChanged(object? sender, ResourceChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(ColorKey));
+    }
+
+    private void Default_ThemeChanged(object? sender, MauiAppThemeChangedEventArgs e)
+    {
+        OnPropertyChanged(nameof(Selection));
+    }
     public MauiAppTheme Selection
     {
-        get {
-            if(MauiTheme.Default.CurrentAppTheme != _currentAppTheme)
-            {
-                _currentAppTheme = MauiTheme.Default.CurrentAppTheme;
-                OnPropertyChanged(nameof(Selection));
-                return _currentAppTheme;
-            }
-            return _currentAppTheme;
-        }
+        get => MauiTheme.Default.CurrentAppTheme;
         set
         {
             if (value != MauiTheme.Default.CurrentAppTheme)
@@ -31,7 +35,6 @@ public partial class MainPage : ContentPage
             }
         }
     }
-
     public string ColorKey
     {
         get => MauiTheme.Default.CurrentResource;

@@ -1,5 +1,6 @@
-@page "/"
+@page "/theme"
 @inject IMauiThemeHybrid MauiThemeHybrid
+@implements IDisposable
 
 <title>Theme</title>
 
@@ -21,4 +22,21 @@
     <option value="Yellow">Yellow</option>
     <option value="Green">Green</option>
 </InputSelect>
+
+
+@code{
+    MauiThemeContext? themeContext;
+
+    protected override void OnInitialized()
+    {
+        themeContext = MauiThemeContext.Create(MauiThemeHybrid, () => StateHasChanged());
+
+        base.OnInitialized();
+    }
+
+    public void Dispose()
+    {
+        themeContext?.Dispose();
+    }
+}
 

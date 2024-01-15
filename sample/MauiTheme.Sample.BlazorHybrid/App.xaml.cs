@@ -8,8 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new MainPage();
-
         MauiTheme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
@@ -25,5 +23,9 @@ public partial class App : Application
                     {"Green", "Resources/Styles/Green.xaml" }
                 };
         });
+
+        MainPage = new MainPage();
+
+        
     }
 }
