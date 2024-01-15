@@ -10,11 +10,11 @@
 	<PropertyGroup>
 		<GitInfoReportImportance>high</GitInfoReportImportance>
 		<PackageId>AathifMahir.Maui.MauiTheme.BlazorHybrid</PackageId>
-		<Summary>Maui Theme - Theming Libray for Blazor Hybrid with Ability Retain Sessions and Easy Resource Swapping and etc..</Summary>
+		<Summary>Maui Theme - Blazor Hybrid is Extension of MauiTheme with Ability to Switch Theme and Resources from Blazor Hybrid Project without Any Maui Artifacts</Summary>
 		<Authors>Aathif Mahir</Authors>
 		<Owners>Aathif Mahir</Owners>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Product>Maui Theme - Core (net7.0)(net8.0)</Product>
+		<Product>Maui Theme - Blazor Hybrid (net7.0)(net8.0)</Product>
 		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/AathifMahir/MauiTheme</PackageProjectUrl>
@@ -22,7 +22,7 @@
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>Maui Theme</Title>
-		<Description>Maui Theme for Dotnet Maui with Ability Retain Sessions and Easy Resource Swapping, Easy Theme Switcher and etc..</Description>
+		<Description>Maui Theme - Blazor Hybrid is Extension of MauiTheme with Ability to Switch Theme and Resources from Blazor Hybrid Project without Any Maui Artifacts and Additionally Listening Theme Changes Happened from Maui App as well</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
@@ -30,7 +30,7 @@
 		<Version>0.1.0-preview</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<PackageTags>Maui,Theme,Color,DarkAndLight,AccentColors</PackageTags>
+		<PackageTags>Maui,Blazor,BlazorHybrid,Theme,Color,DarkAndLight,AccentColors</PackageTags>
 		<Configurations>Debug;Release</Configurations>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>

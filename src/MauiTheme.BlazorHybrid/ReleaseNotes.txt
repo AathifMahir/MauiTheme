@@ -1,2 +1,2 @@
-﻿v0.0.1-preview
-• Initial Preview Version
+﻿v0.1.0-preview
+• Blazor Hybrid Support
