@@ -11,7 +11,7 @@ public partial class App : Application
         MauiTheme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = MauiAppTheme.Dark;
+            x.DefaultTheme = MauiAppTheme.Light;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles
