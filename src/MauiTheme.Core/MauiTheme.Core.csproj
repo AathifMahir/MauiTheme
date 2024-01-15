@@ -23,7 +23,7 @@
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>Maui Theme</Title>
 		<Description>Maui Theme for Dotnet Maui with Ability Retain Sessions and Easy Resource Swapping, Easy Theme Switcher and etc..</Description>
-		<!--<PackageIcon>icon.png</PackageIcon>-->
+		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
@@ -43,7 +43,7 @@
 	<ItemGroup>
 		<None Include="readme.md" Pack="true" PackagePath="\" />
 		<None Include="ReadMe.txt" pack="true" PackagePath="." />
-		<!--<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />-->
+		<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />
 	</ItemGroup>
 
 </Project>
