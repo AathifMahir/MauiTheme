@@ -57,7 +57,7 @@ internal sealed class MauiThemeDefault : IMauiTheme
     const string _storageKey = "Theme";
     ThemeStorage _themeStorage = new();
     Dictionary<string, string> _resources = new();
-    MauiAppTheme? _defaultTheme = null;
+    MauiAppTheme _defaultTheme;
     string[] _defaultStyleResources = Array.Empty<string>();
     Assembly _appAssembly = typeof(MauiThemeDefault).Assembly;
     bool _isInitialized = false;
@@ -83,17 +83,16 @@ internal sealed class MauiThemeDefault : IMauiTheme
         if (json.IsEmpty)
         {
             _currentResource = GetInitialResource();
+            if (_defaultTheme is MauiAppTheme.Unspecified) return;
+            ApplyTheme(_defaultTheme);
             return;
         }
 
         _themeStorage = JsonSerializer.Deserialize<ThemeStorage>(json) ?? new() {
-            AppTheme = _defaultTheme.Value,
+            AppTheme = _defaultTheme,
             Resource = string.Empty };
 
-        if (!_themeStorage.AppTheme.HasValue)
-            ApplyTheme(_defaultTheme.Value);
-        else
-            ApplyTheme(_themeStorage.AppTheme.Value);
+        ApplyTheme(_themeStorage.AppTheme);
 
         if (!string.IsNullOrEmpty(_themeStorage.Resource))
             ApplyResource(_themeStorage.Resource, isInit: true);
