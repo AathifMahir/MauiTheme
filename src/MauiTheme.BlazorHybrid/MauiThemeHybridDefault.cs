@@ -1,4 +1,5 @@
 ﻿using MauiTheme.Core;
+using MauiTheme.Core.Events;
 using MauiTheme.Core.Exceptions;
 
 namespace MauiTheme.BlazorHybrid;
@@ -36,7 +37,13 @@ internal sealed class MauiThemeHybridDefault : IMauiThemeHybrid
         }
     }
 
+    public MauiThemeContext Context { get; } = default!;
+
     readonly bool _suppressException;
+
+    public event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged;
+    public event EventHandler<ResourceChangedEventArgs>? ResourceChanged;
+
     public MauiThemeHybridDefault(bool suppressException)
     {
         _suppressException = suppressException;
