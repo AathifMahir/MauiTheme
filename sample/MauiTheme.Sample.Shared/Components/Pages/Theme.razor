@@ -1,0 +1,43 @@
+@page "/theme"
+@inject IMauiThemeHybrid MauiThemeHybrid
+@implements IDisposable
+
+<title>Theme</title>
+
+<h3>Theme</h3>
+<InputRadioGroup Name="Theme" TValue="MauiAppTheme" @bind-Value="MauiThemeHybrid.CurrentAppTheme">
+    @foreach (var item in (MauiAppTheme[])Enum.GetValues(typeof(MauiAppTheme)))
+    {
+        <InputRadio Name="Theme" TValue="MauiAppTheme" value="@item"/>
+         @item
+        <br/>
+    }
+</InputRadioGroup>
+
+<br />
+
+<h3>Color</h3>
+<InputRadioGroup TValue="string" @bind-Value="MauiThemeHybrid.CurrentResource">
+    <InputRadio TValue="string" value="Blue"/>Blue<br/>
+    <InputRadio TValue="string" value="Purple"/>Purple<br/>
+    <InputRadio TValue="string" value="Yellow"/>Yellow<br/>
+    <InputRadio TValue="string" value="Green"/>Green<br />
+</InputRadioGroup>
+
+
+@code{
+    MauiThemeContext? themeContext;
+
+    protected override void OnInitialized()
+    {
+        themeContext = MauiThemeContext.Create(MauiThemeHybrid, () => StateHasChanged());
+
+        base.OnInitialized();
+    }
+
+    public void Dispose()
+    {
+        themeContext?.Dispose();
+    }
+}
+

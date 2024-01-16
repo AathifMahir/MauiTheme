@@ -1,0 +1,6 @@
+﻿v0.1.0-preview
+• Enhancements and Fixes
+• Breaking Changes on Maui Built in AppTheme Construct, Now MauiTheme Uses Custom Construct Called MauiAppTheme
+
+v0.0.1-preview
+• Initial Preview Version

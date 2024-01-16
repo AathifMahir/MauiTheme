@@ -1,6 +1,6 @@
 ﻿using MauiTheme.Core;
 
-namespace MauiTheme.Sample;
+namespace MauiTheme.Sample.BlazorHybrid;
 
 public partial class App : Application
 {
@@ -8,12 +8,10 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
-
         MauiTheme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = MauiAppTheme.Dark;
+            x.DefaultTheme = MauiAppTheme.Light;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles
@@ -26,5 +24,8 @@ public partial class App : Application
                 };
         });
 
+        MainPage = new MainPage();
+
+        
     }
 }
