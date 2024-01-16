@@ -22,7 +22,7 @@ public partial class App : Application
 
         MainPage = new AppShell();
 
-        Theme.Default.InitializeTheme<App>(x =>
+        MauiTheme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
             x.DefaultTheme = MauiAppTheme.Dark;
@@ -107,13 +107,13 @@ When it comes to Switching Theme, You can change the `CurrentTheme` Property to 
 // --------------------------------------------------
 
 // Dark
-Theme.Default.CurrentTheme = MauiAppTheme.Dark;
+MauiTheme.Default.CurrentTheme = MauiAppTheme.Dark;
 
 // Light
-Theme.Default.CurrentTheme = MauiAppTheme.Light;
+MauiTheme.Default.CurrentTheme = MauiAppTheme.Light;
 
 // System
-Theme.Default.CurrentTheme = MauiAppTheme.UnSpecified;
+MauiTheme.Default.CurrentTheme = MauiAppTheme.UnSpecified;
 
 // Blazor Hybrid
 // ---------------------------------------------------
@@ -140,13 +140,13 @@ When it comes to Switching Resource, You can use `CurrentResource` Property to S
 // ---------------------------------------------------
 
 // Blue.xaml
-Theme.Default.CurrentResource = "Blue";
+MauiTheme.Default.CurrentResource = "Blue";
 
 // Purple.xaml
-Theme.Default.CurrentResource = "Purple";
+MauiTheme.Default.CurrentResource = "Purple";
 
 // Yellow.xaml
-Theme.Default.CurrentResource = "Yellow";
+MauiTheme.Default.CurrentResource = "Yellow";
 
 // Blazor Hybrid
 // ---------------------------------------------------
