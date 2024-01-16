@@ -22,7 +22,7 @@ public partial class App : Application
         Theme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = AppTheme.Dark;
+            x.DefaultTheme = MauiAppTheme.Dark;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles
@@ -71,13 +71,13 @@ When it comes to Switching Theme, You can change the `CurrentTheme` Property to 
 ```csharp
 
 // Dark
-Theme.Default.CurrentTheme = AppTheme.Dark;
+Theme.Default.CurrentTheme = MauiAppTheme.Dark;
 
 // Light
-Theme.Default.CurrentTheme = AppTheme.Light;
+Theme.Default.CurrentTheme = MauiAppTheme.Light;
 
 // System
-Theme.Default.CurrentTheme = AppTheme.UnSpecified;
+Theme.Default.CurrentTheme = MauiAppTheme.UnSpecified;
 
 ```
 
