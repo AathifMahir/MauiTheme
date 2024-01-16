@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using MauiTheme.Core;
+using System.ComponentModel;
 
 namespace MauiTheme.Sample;
 
@@ -13,7 +14,7 @@ public partial class MainPage : ContentPage, INotifyPropertyChanged
         BindingContext = this;
     }
 
-    public AppTheme Selection 
+    public MauiAppTheme Selection 
     {
         get => MauiTheme.Default.CurrentAppTheme;
         set
