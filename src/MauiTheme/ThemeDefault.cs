@@ -23,7 +23,7 @@ internal sealed class ThemeDefault : ITheme
                 _currentAppTheme = value;
                 SetTheme(value);
 
-                ThemeChanged?.Invoke(this, new MauiAppThemeChangedEventArgs(value));
+                ThemeChanged?.Invoke(this, new ThemeModeChangedEventArgs(value));
 
                 if (ThemeChangedCommand is not null && ThemeChangedCommand.CanExecute(value))
                     ThemeChangedCommand.Execute(value);
@@ -62,7 +62,7 @@ internal sealed class ThemeDefault : ITheme
     Assembly _appAssembly = typeof(ThemeDefault).Assembly;
     bool _isInitialized = false;
 
-    public event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged;
+    public event EventHandler<ThemeModeChangedEventArgs>? ThemeChanged;
     public event EventHandler<ResourceChangedEventArgs>? ResourceChanged;
 
     public void InitializeTheme<TApp>(Action<ThemeConfiguration> themeConfiguration)

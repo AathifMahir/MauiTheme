@@ -18,7 +18,7 @@ public static class Theme
 
     public static void InitializeTheme<TApp>(Action<ThemeConfiguration> configs) where TApp : Application => Default.InitializeTheme<TApp>(configs);
 
-    public static event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged
+    public static event EventHandler<ThemeModeChangedEventArgs>? ThemeChanged
     {
         add => Default.ThemeChanged += value;
         remove => Default.ThemeChanged -= value;
