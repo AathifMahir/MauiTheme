@@ -25,7 +25,7 @@ public sealed class ThemeContext
         OnChanged?.Invoke();
     }
 
-    private void MauiTheme_ThemeChanged(object? sender, Core.Events.MauiAppThemeChangedEventArgs e)
+    private void MauiTheme_ThemeChanged(object? sender, Core.Events.ThemeModeChangedEventArgs e)
     {
         OnChanged?.Invoke();
     }

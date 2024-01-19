@@ -41,7 +41,7 @@ internal sealed class ThemeHybridDefault : IThemeHybrid
 
     readonly bool _suppressException;
 
-    public event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged;
+    public event EventHandler<ThemeModeChangedEventArgs>? ThemeChanged;
     public event EventHandler<ResourceChangedEventArgs>? ResourceChanged;
 
     public ThemeHybridDefault(bool suppressException)
