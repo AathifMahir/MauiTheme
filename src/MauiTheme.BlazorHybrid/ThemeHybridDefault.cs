@@ -3,10 +3,10 @@ using MauiTheme.Core.Events;
 using MauiTheme.Core.Exceptions;
 
 namespace MauiTheme.BlazorHybrid;
-internal sealed class MauiThemeHybridDefault : IMauiThemeHybrid
+internal sealed class ThemeHybridDefault : IThemeHybrid
 {
-    readonly MauiAppTheme _currentAppTheme = MauiAppTheme.Unspecified;
-    public MauiAppTheme CurrentAppTheme 
+    readonly ThemeMode _currentAppTheme = ThemeMode.Unspecified;
+    public ThemeMode CurrentAppTheme 
     {
         get => _currentAppTheme;
         set
@@ -37,14 +37,14 @@ internal sealed class MauiThemeHybridDefault : IMauiThemeHybrid
         }
     }
 
-    public MauiThemeContext Context { get; } = default!;
+    public ThemeContext Context { get; } = default!;
 
     readonly bool _suppressException;
 
     public event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged;
     public event EventHandler<ResourceChangedEventArgs>? ResourceChanged;
 
-    public MauiThemeHybridDefault(bool suppressException)
+    public ThemeHybridDefault(bool suppressException)
     {
         _suppressException = suppressException;
     }
