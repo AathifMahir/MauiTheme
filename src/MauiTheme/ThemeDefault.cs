@@ -9,11 +9,11 @@ using System.Windows.Input;
 
 
 namespace MauiTheme;
-internal sealed class MauiThemeDefault : IMauiTheme
+internal sealed class ThemeDefault : ITheme
 {
 
-    private MauiAppTheme _currentAppTheme;
-    public MauiAppTheme CurrentAppTheme
+    private ThemeMode _currentAppTheme;
+    public ThemeMode CurrentAppTheme
     {
         get => _currentAppTheme;
         set
@@ -57,9 +57,9 @@ internal sealed class MauiThemeDefault : IMauiTheme
     const string _storageKey = "Theme";
     ThemeStorage _themeStorage = new();
     Dictionary<string, string> _resources = new();
-    MauiAppTheme _defaultTheme;
+    ThemeMode _defaultTheme;
     string[] _defaultStyleResources = Array.Empty<string>();
-    Assembly _appAssembly = typeof(MauiThemeDefault).Assembly;
+    Assembly _appAssembly = typeof(ThemeDefault).Assembly;
     bool _isInitialized = false;
 
     public event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged;
@@ -83,7 +83,7 @@ internal sealed class MauiThemeDefault : IMauiTheme
         if (json.IsEmpty)
         {
             _currentResource = GetInitialResource();
-            if (_defaultTheme is MauiAppTheme.Unspecified) return;
+            if (_defaultTheme is ThemeMode.Unspecified) return;
             ApplyTheme(_defaultTheme);
             return;
         }
@@ -161,7 +161,7 @@ internal sealed class MauiThemeDefault : IMauiTheme
         Preferences.Default.Set(_storageKey, _themeStorage.ToJson());
     }
 
-    void ApplyTheme(MauiAppTheme theme)
+    void ApplyTheme(ThemeMode theme)
     {
         if (Application.Current is null) return;
         var appTheme = theme.MapToAppTheme();
@@ -171,7 +171,7 @@ internal sealed class MauiThemeDefault : IMauiTheme
         _currentAppTheme = theme;
     }
 
-    void SetTheme(MauiAppTheme appTheme)
+    void SetTheme(ThemeMode appTheme)
     {
         if (!_isInitialized) throw new MauiThemeException("Make sure to Initialize by using Initialize Theme before Setting the Theme");
 

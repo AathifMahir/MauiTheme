@@ -3,12 +3,12 @@
 namespace MauiTheme.Extensions;
 internal static class EnumExtension
 {
-    internal static AppTheme MapToAppTheme(this MauiAppTheme mauiAppTheme) =>
+    internal static AppTheme MapToAppTheme(this ThemeMode mauiAppTheme) =>
         mauiAppTheme switch
         {
-            MauiAppTheme.Unspecified => AppTheme.Unspecified,
-            MauiAppTheme.Dark => AppTheme.Dark,
-            MauiAppTheme.Light => AppTheme.Light,
+            ThemeMode.Unspecified => AppTheme.Unspecified,
+            ThemeMode.Dark => AppTheme.Dark,
+            ThemeMode.Light => AppTheme.Light,
             _ => AppTheme.Unspecified,
         };
 }
