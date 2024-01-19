@@ -14,14 +14,14 @@ public partial class MainPage : ContentPage, INotifyPropertyChanged
         BindingContext = this;
     }
 
-    public MauiAppTheme Selection 
+    public ThemeMode Selection 
     {
-        get => MauiTheme.Default.CurrentAppTheme;
+        get => Theme.Default.CurrentAppTheme;
         set
         {
-            if(value != MauiTheme.Default.CurrentAppTheme)
+            if(value != Theme.Default.CurrentAppTheme)
             {
-                MauiTheme.Default.CurrentAppTheme = value;
+                Theme.Default.CurrentAppTheme = value;
                 OnPropertyChanged(nameof(Selection));
             }
         }
@@ -29,12 +29,12 @@ public partial class MainPage : ContentPage, INotifyPropertyChanged
 
     public string ColorKey
     {
-        get => MauiTheme.Default.CurrentResource;
+        get => Theme.Default.CurrentResource;
         set
         {
-            if (value != MauiTheme.Default.CurrentResource)
+            if (value != Theme.Default.CurrentResource)
             {
-                MauiTheme.Default.CurrentResource = value;
+                Theme.Default.CurrentResource = value;
                 OnPropertyChanged(nameof(ColorKey));
             }
         }
