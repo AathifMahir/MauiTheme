@@ -22,6 +22,9 @@ public static class BuilderExtension
     /// <summary>
     /// Initializes the Maui Theme for a Classic Blazor Project. Ensure not to use this BuilderExtension on Blazor Hybrid Projects.
     /// </summary>
+    /// <remarks>
+    /// Remember that this Initializes a Mock of MauiTheme to avoid Runtime Exception When the MauiTheme is Called Directly on Classic Blazor Projects without Hybrid Hosting
+    /// </remarks>
     /// <param name="suppressException">Indicates whether to suppress exceptions. Defaults to True.</param>
     /// <param name="dependencyType">Indicates whether the dependency should be stored as Scoped or Singleton. Defaults to Scoped.</param>
     public static IServiceCollection UseMauiThemeBlazor(this IServiceCollection services, bool suppressException = true, DependencyType dependencyType = DependencyType.Scoped)
