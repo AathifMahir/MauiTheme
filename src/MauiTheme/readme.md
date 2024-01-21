@@ -1,48 +1,43 @@
 # Maui Theme
 
-|**Latest Stable** | **Latest Preview**|
-|  :---:     |    :---:   |
-|[![AathifMahir.Maui.MauiShakeDetector](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiTheme)](https://www.nuget.org/packages/AathifMahir.Maui.MauiTheme/) | [![AathifMahir.Maui.MauiShakeDetector](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiTheme)](https://nuget.org/packages/AathifMahir.Maui.MauiTheme/absoluteLatest) |
-
-MauiTheme is Theming Libray that Makes the Theming on Dotnet Maui a Breeze with Persistent Theme State Between Sessions and Seamless Resource Swapping, Theme Switcher and etc..
+MauiTheme is a theming library that makes theming on .NET MAUI a breeze, providing persistent theme state between sessions and seamless resource swapping, theme switcher, and more.
 
 # Get Started
 
-You need to Call `InitializeTheme()` in the `App.xaml.cs` Like Below Example
+You need to call `InitializeTheme()` in the `App.xaml.cs` file as shown in the example below. Ensure that `InitializeTheme()` is called before setting up the MainPage property.
 
 ```csharp
+using MauiTheme.Core;
+
 public partial class App : Application
 {
     public App()
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
-
         Theme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = MauiAppTheme.Dark;
+            x.DefaultTheme = ThemeMode.Dark;
             // Default Styles Resources
-            x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
+            x.DefaultStyleResources = new List<string> { "Resources/Styles/Styles.xaml" };
             // All Resources Excluding Styles
-            x.Resources = new()
-                {
-                    {"Blue", "Resources/Styles/Blue.xaml"},
-                    {"Purple", "Resources/Styles/Colors.xaml"},
-                    {"Yellow", "Resources/Styles/Yellow.xaml" },
-                    {"Green", "Resources/Styles/Green.xaml" }
-                };
-            
+            x.Resources = new Dictionary<string, string>
+            {
+                {"Blue", "Resources/Styles/Blue.xaml"},
+                {"Purple", "Resources/Styles/Colors.xaml"},
+                {"Yellow", "Resources/Styles/Yellow.xaml" },
+                {"Green", "Resources/Styles/Green.xaml" }
+            };
         });
 
+        MainPage = new AppShell();
     }
-}
 ```
 
 # App.xaml Setup
 
-The App.xaml should include the Default Color and Style Resource Like Below Example
+The App.xaml should include the default color and style resources as shown below:
 
 ```xml
 <Application.Resources>
@@ -66,24 +61,26 @@ The App.xaml should include the Default Color and Style Resource Like Below Exam
 
 # Theme
 
-When it comes to Switching Theme, You can change the `CurrentTheme` Property to Switch the Theme Like Below Example
+When it comes to switching themes, you can change the `CurrentTheme` property to switch the theme as shown below:
 
 ```csharp
 
 // Dark
-Theme.Default.CurrentTheme = MauiAppTheme.Dark;
+Theme.Default.CurrentTheme = ThemeMode.Dark;
 
 // Light
-Theme.Default.CurrentTheme = MauiAppTheme.Light;
+Theme.Default.CurrentTheme = ThemeMode.Light;
 
 // System
-Theme.Default.CurrentTheme = MauiAppTheme.UnSpecified;
+Theme.Default.CurrentTheme = ThemeMode.UnSpecified;
 
 ```
 
 # Resources
 
-When it comes to Switching Resource, You can use `CurrentResource` Property to Swap the Resources Like Below Example, Make sure to Note that Resources is Applied Using The Key that you have passed into `InitializeTheme` `Resources` Property
+When it comes to switching resources, you can use the `CurrentResource` property to swap the resources.
+
+**Dislaimer:** the resources are applied using the key passed into the InitializeTheme `Resources` property:
 
 ```csharp
 
@@ -100,25 +97,37 @@ Theme.Default.CurrentResource = "Yellow";
 
 # Listening to Theme or Resource Changes
 
-Mainly this is useful when theme or resource changes is invoked from external source for instance from a razor class library
+This is mainly useful when theme or resource changes are invoked from an external source, such as a razor class library but nothing stopping from using it tradionally:
 
 ```csharp
 
 // Theme Changed Event
-MauiTheme.Default.ThemeChanged += (s, t) => 
+Theme.Default.ThemeChanged += (s, t) => 
 {
     Debug.Writeline($"New Theme : {t.ToString()}")
 }
 
 // Theme Changed Event
-MauiTheme.Default.ResourceChanged += (s, r) => 
+Theme.Default.ResourceChanged += (s, r) => 
 {
     Debug.Writeline($"New Resource : {r}")
 }
 
 ```
 
-Additionally we can use `ICommand` as well, Those are `ThemeChangedCommand` and `ResourceChangedCommand`
+Additionally, we can use `ICommand` as well, those are `ThemeChangedCommand` and `ResourceChangedCommand`.
+
+# Properties and Methods
+
+| Parameters | Type | Description |
+|               :---               |    :---:   |            :---:       
+| **InitializeTheme()** | `method` | This is used for Initializing MauiTheme ||
+| **CurrentTheme** | `ThemeMode` | Gets or sets the current theme |
+| **CurrentResource** | `string` | Gets or sets the current resource |
+| **ThemeChanged** | `event` | Theme Changed event is fired whenever theme changes happens |
+| **ResourceChanged** | `event` | Resource Changed event is fired whenever resource changes happens |
+| **ThemeChangedCommand** | `ICommand` | Theme Changed Command is fired whenever theme changes happens |
+| **ResourceChangedCommand** | `ICommand` | Resource Changed Command is fired whenever resource changes happens |
 
 
 # License
@@ -127,6 +136,6 @@ Maui Theme is Licensed Under [MIT License](https://github.com/AathifMahir/MauiTh
 
 # Contribute and Credit
 
-Credits for @taublast for Helping with Resource Creation.
+Credits to [@taublast](https://github.com/taublast) for Helping with Resource Creation.
 
 If you wish to contribute to this project, please don't hesitate to create an issue or request. Your input and feedback are highly appreciated. Additionally, if you're interested in supporting the project by providing resources or [**becoming a sponsor**](https://github.com/sponsors/AathifMahir), your contributions would be welcomed and instrumental in its continued development and success. Thank you for your interest in contributing to this endeavor.
