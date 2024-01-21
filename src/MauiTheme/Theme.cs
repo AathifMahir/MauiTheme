@@ -3,9 +3,9 @@ using MauiTheme.Core.Events;
 using System.Windows.Input;
 
 namespace MauiTheme;
-public static class MauiTheme
+public static class Theme
 {
-    public static MauiAppTheme CurrentAppTheme 
+    public static ThemeMode CurrentAppTheme 
     {
         get => Default.CurrentAppTheme;
         set => Default.CurrentAppTheme = value;
@@ -18,7 +18,7 @@ public static class MauiTheme
 
     public static void InitializeTheme<TApp>(Action<ThemeConfiguration> configs) where TApp : Application => Default.InitializeTheme<TApp>(configs);
 
-    public static event EventHandler<MauiAppThemeChangedEventArgs>? ThemeChanged
+    public static event EventHandler<ThemeModeChangedEventArgs>? ThemeChanged
     {
         add => Default.ThemeChanged += value;
         remove => Default.ThemeChanged -= value;
@@ -42,10 +42,10 @@ public static class MauiTheme
         set => Default.ResourceChangedCommand = value;
     }
 
-    internal static void SetDefault(IMauiTheme? implementation) =>
+    internal static void SetDefault(ITheme? implementation) =>
        defaultTheme = implementation;
 
-    static IMauiTheme? defaultTheme;
+    static ITheme? defaultTheme;
 
-    public static IMauiTheme Default => defaultTheme ??= new MauiThemeDefault();
+    public static ITheme Default => defaultTheme ??= new ThemeDefault();
 }

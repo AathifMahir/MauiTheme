@@ -1,21 +1,21 @@
 ﻿using MauiTheme.Core;
 
 namespace MauiTheme.BlazorHybrid;
-public sealed class MauiThemeContext
+public sealed class ThemeContext
 {
-    private readonly IMauiThemeHybrid _mauiTheme;
+    private readonly IThemeHybrid _mauiTheme;
     public event Action? OnChanged;
 
-    private MauiThemeContext(IMauiThemeHybrid mauiTheme)
+    private ThemeContext(IThemeHybrid mauiTheme)
     {
         _mauiTheme = mauiTheme;
         _mauiTheme.ThemeChanged += MauiTheme_ThemeChanged;
         _mauiTheme.ResourceChanged += MauiTheme_ResourceChanged;
     }
 
-    public static MauiThemeContext Create(IMauiThemeHybrid mauiTheme, Action onThemeChangedCallback)
+    public static ThemeContext Create(IThemeHybrid mauiTheme, Action onThemeChangedCallback)
     {
-        var theme = new MauiThemeContext(mauiTheme);
+        var theme = new ThemeContext(mauiTheme);
         theme.OnChanged += onThemeChangedCallback;
         return theme;
     }
@@ -25,7 +25,7 @@ public sealed class MauiThemeContext
         OnChanged?.Invoke();
     }
 
-    private void MauiTheme_ThemeChanged(object? sender, Core.Events.MauiAppThemeChangedEventArgs e)
+    private void MauiTheme_ThemeChanged(object? sender, Core.Events.ThemeModeChangedEventArgs e)
     {
         OnChanged?.Invoke();
     }

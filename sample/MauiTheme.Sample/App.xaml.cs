@@ -10,10 +10,10 @@ public partial class App : Application
 
         MainPage = new AppShell();
 
-        MauiTheme.Default.InitializeTheme<App>(x =>
+        Theme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = MauiAppTheme.Dark;
+            x.DefaultTheme = ThemeMode.Dark;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles

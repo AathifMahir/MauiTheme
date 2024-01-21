@@ -41,9 +41,9 @@
 		<Description>Maui Theme for Dotnet Maui with Ability Retain Sessions and Easy Resource Swapping, Easy Theme Switcher and etc..</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>0.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.1-preview</Version>
+		<AssemblyVersion>0.5.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.5.0.0</AssemblyFileVersion>
+		<Version>0.5.0</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>Maui,Theme,Color,DarkAndLight,AccentColors</PackageTags>

@@ -25,9 +25,9 @@
 		<Description>Maui Theme - Blazor Hybrid is Extension of MauiTheme with Ability to Switch Theme and Resources from Blazor Hybrid Project without Any Maui Artifacts and Additionally Listening Theme Changes Happened from Maui App as well</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>0.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0-preview</Version>
+		<AssemblyVersion>0.5.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.5.0.0</AssemblyFileVersion>
+		<Version>0.5.0</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>Maui,Blazor,BlazorHybrid,Theme,Color,DarkAndLight,AccentColors</PackageTags>
@@ -48,10 +48,10 @@
 
 
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net8'))">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.*" />
 	</ItemGroup>
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net7'))">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.15" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.*" />
 	</ItemGroup>
 	
   <ItemGroup>

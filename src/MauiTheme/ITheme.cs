@@ -2,7 +2,7 @@
 using System.Windows.Input;
 
 namespace MauiTheme;
-public interface IMauiTheme : IMauiThemeHybrid
+public interface ITheme : IThemeHybrid
 {
     /// <summary>
     /// Initializes the Maui Theme

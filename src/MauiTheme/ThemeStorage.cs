@@ -6,7 +6,7 @@ namespace MauiTheme;
 public sealed class ThemeStorage
 {
     [JsonPropertyName("Theme")]
-    public MauiAppTheme AppTheme { get; set; }
+    public ThemeMode AppTheme { get; set; }
 
     [JsonPropertyName("Resource")]
     public string Resource {  get; set; } = string.Empty;

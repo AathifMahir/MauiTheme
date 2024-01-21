@@ -8,10 +8,10 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MauiTheme.Default.InitializeTheme<App>(x =>
+        Theme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = MauiAppTheme.Light;
+            x.DefaultTheme = ThemeMode.Light;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles

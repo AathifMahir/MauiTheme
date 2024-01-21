@@ -1,6 +1,6 @@
 # Maui Theme
 
-MauiTheme is Theming Libray that Makes the Theming on Dotnet Maui a Breeze with Persistent Theme State Between Sessions and Seamless Resource Swapping, Theme Switcher and Blazor Hybrid Support.
+MauiTheme is a theming library that simplifies theming on .NET Maui, providing a seamless experience with persistent theme state between sessions, easy resource swapping, a theme switcher, and support for Blazor Hybrid.
 
 # Packages
 
@@ -11,21 +11,21 @@ Package | Latest stable | Latest Preview | Description
 
 # Get Started
 
-You need to Call `InitializeTheme()` in the `App.xaml.cs` Like Below Example
+You need to call `InitializeTheme()` in the `App.xaml.cs` file as shown in the example below. Ensure that `InitializeTheme()` is called before setting up the MainPage property.
 
 ```csharp
+using MauiTheme.Core;
+
 public partial class App : Application
 {
     public App()
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
-
-        MauiTheme.Default.InitializeTheme<App>(x =>
+        Theme.Default.InitializeTheme<App>(x =>
         {
             // Default Theme
-            x.DefaultTheme = MauiAppTheme.Dark;
+            x.DefaultTheme = ThemeMode.Dark;
             // Default Styles Resources
             x.DefaultStyleResources = ["Resources/Styles/Styles.xaml"];
             // All Resources Excluding Styles
@@ -39,13 +39,15 @@ public partial class App : Application
             
         });
 
+        MainPage = new AppShell();
+
     }
 }
 ```
 
 # App.xaml Setup
 
-The App.xaml should include the Default Color and Style Resource Like Below Example
+The App.xaml should include the default color and style resources as shown below:
 
 ```xml
 <Application.Resources>
@@ -69,7 +71,7 @@ The App.xaml should include the Default Color and Style Resource Like Below Exam
 
 # Blazor Hybrid Usage
 
-In Order to Initialize the MauiTheme Blazor Hybrid, You need to call `UseMauiThemeHybrid()` in `program.cs` like below example
+In Order to Initialize the MauiTheme Blazor Hybrid, you need to call `UseMauiThemeHybrid()` in `program.cs` as shown in the example below:
 
 ```csharp
 using MauiTheme.BlazorHybrid;
@@ -81,14 +83,14 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
 
         // Initializing MauiTheme on Blazor Hybrid Project by Sharing the Instance of MauiTheme
-        builder.Services.UseMauiThemeHybrid(MauiTheme.Default);
+        builder.Services.UseMauiThemeHybrid(Theme.Default);
 
         return builder.Build();
     }
 }
 ```
 
-If your using WebAssembly or Any Other Blazor Hosting Model, Where your sharing a razor class library within those and Blazor Hybrid
+If you are using WebAssembly or any other Blazor hosting model, and you are sharing a Razor Class Library within those, as well as with Blazor Hybrid, you need call `UseMauiThemeBlazor` in those Classic Blazor Project to Avoid Runtime Crashing like below example:
 
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -99,7 +101,7 @@ builder.Services.UseMauiThemeBlazor();
 
 # Theme
 
-When it comes to Switching Theme, You can change the `CurrentTheme` Property to Switch the Theme Like Below Example
+When it comes to switching themes, you can change the `CurrentTheme` property to switch the theme like in the example below:
 
 ```csharp
 
@@ -107,53 +109,53 @@ When it comes to Switching Theme, You can change the `CurrentTheme` Property to 
 // --------------------------------------------------
 
 // Dark
-MauiTheme.Default.CurrentTheme = MauiAppTheme.Dark;
+Theme.Default.CurrentTheme = ThemeMode.Dark;
 
 // Light
-MauiTheme.Default.CurrentTheme = MauiAppTheme.Light;
+Theme.Default.CurrentTheme = ThemeMode.Light;
 
 // System
-MauiTheme.Default.CurrentTheme = MauiAppTheme.UnSpecified;
+Theme.Default.CurrentTheme = ThemeMode.UnSpecified;
 
 // Blazor Hybrid
 // ---------------------------------------------------
 
-@inject IMauiThemeHybrid MauiThemeHybrid
+@inject IThemeHybrid ThemeHybrid
 
 // Dark
-MauiThemeHybrid.CurrentTheme = MauiAppTheme.Dark;
+ThemeHybrid.CurrentTheme = ThemeMode.Dark;
 
 // Light
-MauiThemeHybrid.CurrentTheme = MauiAppTheme.Light;
+ThemeHybrid.CurrentTheme = ThemeMode.Light;
 
 // System
-MauiThemeHybrid.CurrentTheme = MauiAppTheme.UnSpecified;
+ThemeHybrid.CurrentTheme = ThemeMode.UnSpecified;
 
 ```
 
 # Resources
 
-When it comes to Switching Resource, You can use `CurrentResource` Property to Swap the Resources Like Below Example, Make sure to Note that Resources is Applied Using The Key that you have passed into `InitializeTheme` `Resources` Property
-
+When it comes to switching resources, you can use the `CurrentResource` property to swap the resources, as shown in the example below. Make sure to note that resources are applied using the key that you have passed into the `InitializeTheme` `Resources` property.
 ```csharp
 // Maui
-// ---------------------------------------------------
+---------------------------------------------------
 
 // Blue.xaml
-MauiTheme.Default.CurrentResource = "Blue";
+Theme.Default.CurrentResource = "Blue";
 
 // Purple.xaml
-MauiTheme.Default.CurrentResource = "Purple";
+Theme.Default.CurrentResource = "Purple";
 
 // Yellow.xaml
-MauiTheme.Default.CurrentResource = "Yellow";
+Theme.Default.CurrentResource = "Yellow";
+
 
 // Blazor Hybrid
-// ---------------------------------------------------
+---------------------------------------------------
 
-@inject IMauiThemeHybrid MauiThemeHybrid
+@inject IThemeHybrid ThemeHybrid
 
-MauiThemeHybrid.CurrentResource = "Blue";
+ThemeHybrid.CurrentResource = "Blue";
 
 ```
 
@@ -164,13 +166,13 @@ Mainly this is useful when theme or resource changes is invoked from external so
 ```csharp
 
 // Theme Changed Event
-MauiTheme.Default.ThemeChanged += (s, t) => 
+Theme.Default.ThemeChanged += (s, t) => 
 {
     Debug.Writeline($"New Theme : {t.ToString()}")
 }
 
 // Theme Changed Event
-MauiTheme.Default.ResourceChanged += (s, r) => 
+Theme.Default.ResourceChanged += (s, r) => 
 {
     Debug.Writeline($"New Resource : {r}")
 }
@@ -181,18 +183,18 @@ MauiTheme.Default.ResourceChanged += (s, r) =>
 
 This is mainly useful when listening to Theme or Resource Changes from External Sources for Instance from Maui, as you can see in the below example, we are invoking `StateChanged()` method in MauiThemeContext, Basically What that Says is Refresh the Razor Component Whenever Theme Changes
 
-```razor
+```csharp
 
-@inject IMauiThemeHybrid MauiThemeHybrid
+@inject IThemeHybrid ThemeHybrid
 @implements IDisposable
 
 <title>Theme</title>
 
 <h3>Theme</h3>
-<InputRadioGroup Name="Theme" TValue="MauiAppTheme" @bind-Value="MauiThemeHybrid.CurrentAppTheme">
-    @foreach (var item in (MauiAppTheme[])Enum.GetValues(typeof(MauiAppTheme)))
+<InputRadioGroup Name="Theme" TValue="ThemeMode" @bind-Value="ThemeHybrid.CurrentAppTheme">
+    @foreach (var item in (ThemeMode[])Enum.GetValues(typeof(ThemeMode)))
     {
-        <InputRadio Name="Theme" TValue="MauiAppTheme" value="@item"/>
+        <InputRadio Name="Theme" TValue="ThemeMode" value="@item"/>
          @item
         <br/>
     }
@@ -201,7 +203,7 @@ This is mainly useful when listening to Theme or Resource Changes from External 
 <br />
 
 <h3>Color</h3>
-<InputRadioGroup TValue="string" @bind-Value="MauiThemeHybrid.CurrentResource">
+<InputRadioGroup TValue="string" @bind-Value="ThemeHybrid.CurrentResource">
     <InputRadio TValue="string" value="Blue"/>Blue<br/>
     <InputRadio TValue="string" value="Purple"/>Purple<br/>
     <InputRadio TValue="string" value="Yellow"/>Yellow<br/>
@@ -210,11 +212,11 @@ This is mainly useful when listening to Theme or Resource Changes from External 
 
 
 @code{
-    MauiThemeContext? themeContext;
+    ThemeContext? themeContext;
 
     protected override void OnInitialized()
     {
-        themeContext = MauiThemeContext.Create(MauiThemeHybrid, () => StateHasChanged());
+        themeContext = ThemeContext.Create(ThemeHybrid, () => StateHasChanged());
 
         base.OnInitialized();
     }
@@ -226,6 +228,26 @@ This is mainly useful when listening to Theme or Resource Changes from External 
 }
 
 ```
+
+# Properties and Methods - MauiTheme
+
+| Parameters | Type | Description |
+|               :---               |    :---:   |            :---:       
+| **InitializeTheme()** | `method` | This is used for Initializing MauiTheme ||
+| **CurrentTheme** | `ThemeMode` | Gets or sets the current theme |
+| **CurrentResource** | `string` | Gets or sets the current resource |
+| **ThemeChanged** | `event` | Theme Changed event is fired whenever theme changes happens |
+| **ResourceChanged** | `event` | Resource Changed event is fired whenever resource changes happens |
+| **ThemeChangedCommand** | `ICommand` | Theme Changed Command is fired whenever theme changes happens |
+| **ResourceChangedCommand** | `ICommand` | Resource Changed Command is fired whenever resource changes happens |
+
+# Properties and Methods - Hybrid
+
+| Parameters | Type | Description |
+|               :---               |    :---:   |            :---:       
+| **CurrentTheme** | `ThemeMode` | Gets or sets the current theme |
+| **CurrentResource** | `string` | Gets or sets the current resource |
+| **ThemeContext.Create()** | `method` | Theme Context would trigger CallBack Whenever Theme Changes Happens Outside Blazor Context |
 
 
 # License

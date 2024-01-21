@@ -1,5 +1,5 @@
 ﻿namespace MauiTheme.Core;
-public enum MauiAppTheme
+public enum ThemeMode
 {
     /// <summary>Default, unknown or unspecified theme.</summary>
     Unspecified,

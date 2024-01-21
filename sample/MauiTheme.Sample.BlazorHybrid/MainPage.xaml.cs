@@ -10,8 +10,8 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         BindingContext = this;
 
-        MauiTheme.Default.ThemeChanged += Default_ThemeChanged;
-        MauiTheme.Default.ResourceChanged += Default_ResourceChanged;
+        Theme.Default.ThemeChanged += Default_ThemeChanged;
+        Theme.Default.ResourceChanged += Default_ResourceChanged;
     }
 
     private void Default_ResourceChanged(object? sender, ResourceChangedEventArgs e)
@@ -19,30 +19,30 @@ public partial class MainPage : ContentPage
         OnPropertyChanged(nameof(ColorKey));
     }
 
-    private void Default_ThemeChanged(object? sender, MauiAppThemeChangedEventArgs e)
+    private void Default_ThemeChanged(object? sender, ThemeModeChangedEventArgs e)
     {
         OnPropertyChanged(nameof(Selection));
     }
-    public MauiAppTheme Selection
+    public ThemeMode Selection
     {
-        get => MauiTheme.Default.CurrentAppTheme;
+        get => Theme.Default.CurrentAppTheme;
         set
         {
-            if (value != MauiTheme.Default.CurrentAppTheme)
+            if (value != Theme.Default.CurrentAppTheme)
             {
-                MauiTheme.Default.CurrentAppTheme = value;
+                Theme.Default.CurrentAppTheme = value;
                 OnPropertyChanged(nameof(Selection));
             }
         }
     }
     public string ColorKey
     {
-        get => MauiTheme.Default.CurrentResource;
+        get => Theme.Default.CurrentResource;
         set
         {
-            if (value != MauiTheme.Default.CurrentResource)
+            if (value != Theme.Default.CurrentResource)
             {
-                MauiTheme.Default.CurrentResource = value;
+                Theme.Default.CurrentResource = value;
                 OnPropertyChanged(nameof(ColorKey));
             }
         }

@@ -9,7 +9,7 @@ public sealed class ThemeConfiguration
     /// <remarks>
     /// Defaults to MauiAppTheme.Unspecified
     /// </remarks>
-    public MauiAppTheme DefaultTheme { get; set; } = MauiAppTheme.Unspecified;
+    public ThemeMode DefaultTheme { get; set; } = ThemeMode.Unspecified;
 
     /// <summary>
     /// Implies an array of style resources that should be applied consistently with every theme change.
