@@ -18,7 +18,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
 
         // Initializing MauiTheme on Blazor Hybrid Project by Sharing the Instance of MauiTheme
-        builder.Services.UseMauiThemeHybrid(MauiTheme.Default);
+        builder.Services.UseMauiThemeHybrid(Theme.Default);
 
         return builder.Build();
     }
@@ -71,7 +71,7 @@ ThemeHybrid.CurrentResource = "Blue";
 
 This is mainly useful when listening to Theme or Resource Changes from External Sources for Instance from Maui, as you can see in the below example, we are invoking `StateChanged()` method in MauiThemeContext, Basically What that Says is Refresh the Razor Component Whenever Theme Changes
 
-```razor
+```csharp
 
 @inject IThemeHybrid ThemeHybrid
 @implements IDisposable
